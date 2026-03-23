@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nico Wagner | Research</title>
+  <meta name="description" content="Personal academic website of Nico Wagner, focused on machine learning, LLM evaluation, uncertainty quantification, model efficiency, and AI for science." />
+  <style>
+    :root {
+      --bg: #0f1117;
+      --bg-alt: #151922;
+      --surface: rgba(255, 255, 255, 0.04);
+      --surface-strong: rgba(255, 255, 255, 0.06);
+      --card: rgba(19, 23, 32, 0.78);
+      --card-2: rgba(24, 29, 40, 0.82);
+      --text: #f3f5fb;
+      --muted: #aeb6c7;
+      --soft: #d8deea;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.14);
+      --accent: #6ea8ff;
+      --accent-soft: rgba(110, 168, 255, 0.16);
+      --accent-glow: rgba(110, 168, 255, 0.22);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+      --shadow-soft: 0 14px 32px rgba(0, 0, 0, 0.18);
+      --maxw: 1120px;
+      --radius: 26px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,255,255,0.06), transparent 0 28%),
+        radial-gradient(circle at 85% 12%, rgba(110,168,255,0.10), transparent 0 22%),
+        radial-gradient(circle at 50% 100%, rgba(255,255,255,0.04), transparent 0 30%),
+        linear-gradient(180deg, #0c0f15 0%, #11151d 45%, #0d1016 100%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+      opacity: 0.25;
+    }
+
+    a {
+      color: var(--soft);
+      text-decoration: none;
+      transition: color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    .publication-link {
+      color: var(--text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    .publication-link::after {
+      content: "↗";
+      font-size: 0.9rem;
+      color: var(--accent);
+      opacity: 0.8;
+      transform: translateY(-1px);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .publication-link:hover {
+      color: white;
+      transform: translateX(2px);
+    }
+
+    .publication-link:hover::after {
+      opacity: 1;
+      transform: translate(2px, -1px);
+    }
+
+    .container {
+      width: min(var(--maxw), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(12, 15, 21, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      position: relative;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    .brand::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 40%;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      position: relative;
+      padding: 6.25rem 0 3.5rem;
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 8%;
+      top: 8%;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, var(--accent-glow), transparent 68%);
+      filter: blur(8px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.42rem 0.82rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      color: var(--soft);
+      background: rgba(255,255,255,0.04);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 18px var(--accent-glow);
+    }
+
+    h1, h2, h3 {
+      line-height: 1.12;
+      margin: 0 0 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 5vw, 4.8rem);
+      letter-spacing: -0.05em;
+      max-width: 9ch;
+    }
+
+    h2 {
+      font-size: clamp(1.65rem, 2vw, 2.25rem);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    h3 {
+      font-size: 1.12rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 62ch;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-card,
+    .card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+    }
+
+    .hero-card::before,
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 40%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-card:hover,
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+    }
+
+    .hero-card {
+      padding: 1.5rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.035));
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .stat {
+      padding: 1rem;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-3px);
+      border-color: rgba(110,168,255,0.22);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(110,168,255,0.04));
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      margin-bottom: 0.28rem;
+      color: var(--text);
+    }
+
+    .muted { color: var(--muted); }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.86rem 1.18rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      font-weight: 600;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.07);
+      box-shadow: 0 18px 28px rgba(0, 0, 0, 0.2);
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, rgba(110,168,255,0.22), rgba(110,168,255,0.12));
+      border-color: rgba(110,168,255,0.28);
+      color: white;
+    }
+
+    .button.primary:hover {
+      background: linear-gradient(135deg, rgba(110,168,255,0.28), rgba(110,168,255,0.16));
+      border-color: rgba(110,168,255,0.38);
+    }
+
+    section {
+      padding: 2rem 0;
+      scroll-margin-top: 88px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.5rem;
+    }
+
+    .card {
+      padding: 1.6rem;
+    }
+
+    .tag-list,
+    .link-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      padding: 0.6rem 0.86rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .tag-list li:hover {
+      transform: translateY(-2px);
+      border-color: rgba(110,168,255,0.24);
+      color: var(--soft);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item,
+    .pub-item {
+      position: relative;
+      padding: 1rem 0 0 1.1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .timeline-item::before,
+    .pub-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.35rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(110,168,255,0.45);
+    }
+
+    .timeline-item:first-child,
+    .pub-item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .timeline-item:first-child::before,
+    .pub-item:first-child::before {
+      top: 0.35rem;
+    }
+
+    .meta {
+      color: var(--soft);
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    footer {
+      padding: 2.5rem 0 4rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .small-note {
+      font-size: 0.92rem;
+      color: #99a3b6;
+      margin-top: 0.55rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero > *,
+    .card,
+    .hero-card {
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .hero-card { animation-delay: 0.12s; }
+
+    @media (max-width: 900px) {
+      .hero,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding-top: 5rem;
+      }
+
+      h1 {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--maxw), calc(100% - 1.2rem));
+      }
+
+      .card,
+      .hero-card {
+        padding: 1.2rem;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#top">Nico Wagner</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Machine Learning Research</div>
+        <h1>Nico Wagner</h1>
+        <p class="lead">
+          I am a researcher and computer science student based in Tübingen, Germany, with a focus on machine learning, LLM evaluation,
+          uncertainty quantification, model efficiency, and AI for scientific discovery.
+        </p>
+        <p class="lead">
+          My work spans both applied and foundational topics, including LLM-as-a-judge systems, knowledge distillation and pruning,
+          quantum machine learning, and mathematical methods for scientific AI.
+        </p>
+
+        <div class="cta-row">
+          <a class="button primary" href="mailto:nicowagner02@gmail.com">Email Me</a>
+          <a class="button" href="#publications">View Publications</a>
+          <a class="button" href="https://www.linkedin.com/in/nico-wagner1/">LinkedIn</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <span class="section-label">Profile Snapshot</span>
+        <h3>Current Profile</h3>
+        <p class="muted">
+          B.Sc. student in Computer Science at the University of Tübingen, after completing a B.Sc. in Business Information Systems – Data Science at DHBW Stuttgart.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>2</strong>
+            <span class="muted">NeurIPS publications / workshop papers</span>
+          </div>
+          <div class="stat">
+            <strong>1</strong>
+            <span class="muted">AAAI demo publication</span>
+          </div>
+          <div class="stat">
+            <strong>6</strong>
+            <span class="muted">AI-focused internships at IBM</span>
+          </div>
+          <div class="stat">
+            <strong>1.5</strong>
+            <span class="muted">Final grade at DHBW Stuttgart</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="grid-2">
+        <div class="card">
+          <span class="section-label">About</span>
+          <h2>Researching reliable and efficient machine learning systems</h2>
+          <p class="muted">
+            I am interested in building reliable, efficient, and scientifically useful machine learning systems. My research has explored black-box uncertainty quantification for LLM-based evaluation, efficiency methods such as pruning and distillation, and machine learning applications ranging from quantum models to scientific combinatorics.
+          </p>
+          <p class="muted">
+            Through multiple research and engineering internships at IBM, including work with the MIT-IBM Watson AI Lab, I have contributed to projects at the intersection of modern foundation models, evaluation, and AI for science.
+          </p>
+        </div>
+
+        <div class="card" id="research">
+          <span class="section-label">Focus Areas</span>
+          <h2>Research Focus</h2>
+          <ul class="tag-list">
+            <li>Large Language Models</li>
+            <li>LLM Evaluation</li>
+            <li>Uncertainty Quantification</li>
+            <li>Model Compression</li>
+            <li>Knowledge Distillation</li>
+            <li>Pruning</li>
+            <li>AI for Science</li>
+            <li>Quantum Machine Learning</li>
+            <li>Scientific Machine Learning</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="card">
+        <span class="section-label">Publications</span>
+        <h2>Selected Publications</h2>
+
+        <div class="pub-item">
+          <h3><a class="publication-link" href="https://arxiv.org/abs/2504.16275" target="_blank" rel="noopener noreferrer">Quantum Doubly Stochastic Transformers</a></h3>
+          <div class="meta">NeurIPS Workshop, 2025</div>
+          <p class="muted">Jannis Born, Filip Skogh, Kahn Rhrissorrakrai, Filippo Utro, Nico Wagner, Aleksandros Sobczyk</p>
+        </div>
+
+        <div class="pub-item">
+          <h3><a class="publication-link" href="https://arxiv.org/abs/2410.11594" target="_blank" rel="noopener noreferrer">Black-box Uncertainty Quantification Method for LLM-as-a-Judge</a></h3>
+          <div class="meta">NeurIPS Workshop (SFLLM), 2024</div>
+          <p class="muted">Nico Wagner, Michael Desmond, Rahul Nair, Zahra Ashktorab, Elizabeth M. Daly, Qian Pan, Martín Santillán Cooper, James M. Johnson, Werner Geyer</p>
+        </div>
+
+        <div class="pub-item">
+          <h3><a class="publication-link" href="https://ojs.aaai.org/index.php/AAAI/article/view/35351" target="_blank" rel="noopener noreferrer">EvalAssist: LLM-as-a-judge simplified</a></h3>
+          <div class="meta">AAAI Demonstration, 2024</div>
+          <p class="muted">Michael Desmond, Zahra Ashktorab, Werner Geyer, Elizabeth M. Daly, Martín Santillán Cooper, Qian Pan, Rahul Nair, Nico Wagner, Tejaswini Pedapati</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="grid-2">
+        <div class="card">
+          <span class="section-label">Experience</span>
+          <h2>Research & Industry Experience</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="meta">02/2025 – 05/2025 · IBM, MIT-IBM Watson AI Lab</div>
+              <h3>Research Intern</h3>
+              <p class="muted">Worked on pruning and healing strategies for Granite Guardian and explored advanced knowledge distillation for model compression and efficient inference.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="meta">08/2024 – 11/2024 · IBM, AI for Scientific Research</div>
+              <h3>Research Intern</h3>
+              <p class="muted">Studied combinatorial methods for counting doubly stochastic matrices under discretized constraints and derived a formula for a specific case.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="meta">05/2024 – 08/2024 · IBM, MIT-IBM Watson AI Lab</div>
+              <h3>Research Intern</h3>
+              <p class="muted">Developed a novel uncertainty quantification method for LLMs and designed an associated benchmark pipeline.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="meta">11/2023 – 02/2024 · IBM, Software Development – Data and AI</div>
+              <h3>Intern</h3>
+              <p class="muted">Built a RAG-based LLM application and worked on evaluation of LLMs using LLMs.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="meta">06/2023 – 09/2023 · IBM, Quantum Machine Learning</div>
+              <h3>Intern</h3>
+              <p class="muted">Applied SVC and QSVC to molecular classification and explored quantum feature maps for data processing.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="meta">12/2022 – 03/2023 · IBM, Client Engineering</div>
+              <h3>Intern</h3>
+              <p class="muted">Built models for elephant re-identification and handled data exploration, cleaning, and preprocessing.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <span class="section-label">Education</span>
+            <h2>Education</h2>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="meta">10/2025 – 09/2026</div>
+                <h3>University of Tübingen</h3>
+                <p class="muted">Bachelor of Science in Computer Science (Additional Courses)</p>
+              </div>
+              <div class="timeline-item">
+                <div class="meta">10/2022 – 09/2025</div>
+                <h3>DHBW Stuttgart</h3>
+                <p class="muted">Bachelor of Science in Business Information Systems – Data Science<br/>Final grade: 1.5 (ECTS grade: A)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="section-label">Technical Toolkit</span>
+            <h2>Skills</h2>
+            <ul class="tag-list">
+              <li>Python</li>
+              <li>PyTorch</li>
+              <li>NumPy</li>
+              <li>Pandas</li>
+              <li>Java</li>
+              <li>JavaScript</li>
+              <li>R</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Git</li>
+              <li>Docker</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="card">
+        <span class="section-label">Contact</span>
+        <h2>Get in touch</h2>
+        <p class="muted">
+          I am interested in research collaborations and opportunities related to machine learning, foundation models, evaluation, and efficient AI systems.
+        </p>
+        <ul class="link-list">
+          <li><a class="button primary" href="mailto:nicowagner02@gmail.com">nicowagner02@gmail.com</a></li>
+          <li><a class="button" href="#" title="Replace this placeholder with your Google Scholar link">Google Scholar</a></li>
+          <li><a class="button" href="#" title="Replace this placeholder with your LinkedIn URL">LinkedIn</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Nico Wagner. Built for GitHub Pages.</p>
+    </div>
+  </footer>
+</body>
+</html>
