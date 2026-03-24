@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nico Wagner | Research</title>
-  <meta name="description" content="Personal academic website of Nico Wagner, focused on machine learning, LLM evaluation, uncertainty quantification, model efficiency, and AI for science." />
+  <meta name="description" content="Personal academic website of Nico Wagner, focused on machine learning, uncertainty quantification, model efficiency, and AI for science." />
   <style>
     :root {
       --bg: #0f1117;
       --bg-alt: #151922;
       --surface: rgba(255, 255, 255, 0.04);
       --surface-strong: rgba(255, 255, 255, 0.06);
-      --card: rgba(19, 23, 32, 0.78);
-      --card-2: rgba(24, 29, 40, 0.82);
+      --card: rgba(19, 23, 32, 0.72);
+      --card-2: rgba(24, 29, 40, 0.8);
       --text: #f3f5fb;
       --muted: #aeb6c7;
       --soft: #d8deea;
@@ -25,6 +25,77 @@
       --shadow-soft: 0 14px 32px rgba(0, 0, 0, 0.18);
       --maxw: 1120px;
       --radius: 26px;
+      --bg-gradient:
+        radial-gradient(circle at 85% 12%, rgba(110,168,255,0.08), transparent 0 22%),
+        radial-gradient(circle at 50% 100%, rgba(255,255,255,0.035), transparent 0 30%),
+        linear-gradient(180deg, #0b1017 0%, #101723 48%, #0c1118 100%);
+      --overlay-gradient:
+        radial-gradient(circle at 15% 10%, rgba(255,255,255,0.05), transparent 0 24%),
+        radial-gradient(circle at 82% 14%, rgba(110,168,255,0.08), transparent 0 20%),
+        linear-gradient(180deg, rgba(9, 13, 20, 0.28), rgba(9, 13, 20, 0.38));
+      --grid-line: rgba(255,255,255,0.018);
+      --link-hover: white;
+      --header-bg: rgba(10, 14, 21, 0.58);
+      --card-bg: linear-gradient(180deg, rgba(23, 29, 39, 0.7), rgba(18, 23, 32, 0.58));
+      --card-border: rgba(255,255,255,0.08);
+      --card-highlight: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 40%, transparent 100%);
+      --button-bg: rgba(255,255,255,0.05);
+      --button-border: rgba(255,255,255,0.1);
+      --button-hover-bg: rgba(255,255,255,0.08);
+      --button-hover-border: rgba(255,255,255,0.18);
+      --tag-bg: rgba(255,255,255,0.045);
+      --tag-border: rgba(255,255,255,0.08);
+      --stat-bg: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      --stat-border: rgba(255,255,255,0.07);
+      --tooltip-bg: rgba(15, 18, 26, 0.94);
+      --tooltip-border: rgba(255,255,255,0.1);
+      --canvas-dot: rgba(235, 245, 255, 0.88);
+      --canvas-line-rgb: 170, 220, 255;
+    }
+
+    body.light-mode {
+      --bg: #f6f8fc;
+      --bg-alt: #eef2f9;
+      --surface: rgba(255, 255, 255, 0.82);
+      --surface-strong: rgba(255, 255, 255, 0.92);
+      --card: rgba(255, 255, 255, 0.78);
+      --card-2: rgba(250, 252, 255, 0.92);
+      --text: #101828;
+      --muted: #475467;
+      --soft: #182533;
+      --line: rgba(16, 24, 40, 0.11);
+      --line-strong: rgba(16, 24, 40, 0.18);
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.12);
+      --accent-glow: rgba(59, 130, 246, 0.10);
+      --shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
+      --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.06);
+      --bg-gradient:
+        radial-gradient(circle at 85% 12%, rgba(59,130,246,0.10), transparent 0 22%),
+        radial-gradient(circle at 10% 14%, rgba(255,255,255,0.8), transparent 0 26%),
+        linear-gradient(180deg, #f9fbff 0%, #f4f7fc 48%, #eef3fb 100%);
+      --overlay-gradient:
+        radial-gradient(circle at 15% 10%, rgba(255,255,255,0.65), transparent 0 24%),
+        radial-gradient(circle at 82% 14%, rgba(59,130,246,0.08), transparent 0 20%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(240, 244, 252, 0.42));
+      --grid-line: rgba(16,24,40,0.028);
+      --link-hover: #0f172a;
+      --header-bg: rgba(248, 250, 252, 0.72);
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,250,252,0.74));
+      --card-border: rgba(15, 23, 42, 0.11);
+      --card-highlight: linear-gradient(135deg, rgba(255,255,255,0.38), transparent 42%, transparent 100%);
+      --button-bg: rgba(255,255,255,0.72);
+      --button-border: rgba(15, 23, 42, 0.12);
+      --button-hover-bg: rgba(255,255,255,0.94);
+      --button-hover-border: rgba(59,130,246,0.22);
+      --tag-bg: rgba(255,255,255,0.78);
+      --tag-border: rgba(15, 23, 42, 0.11);
+      --stat-bg: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(245,247,252,0.88));
+      --stat-border: rgba(15, 23, 42, 0.11);
+      --tooltip-bg: rgba(255, 255, 255, 0.97);
+      --tooltip-border: rgba(15, 23, 42, 0.1);
+      --canvas-dot: rgba(39, 76, 125, 0.92);
+      --canvas-line-rgb: 39, 76, 125;
     }
 
     * { box-sizing: border-box; }
@@ -35,13 +106,20 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       line-height: 1.65;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(255,255,255,0.06), transparent 0 28%),
-        radial-gradient(circle at 85% 12%, rgba(110,168,255,0.10), transparent 0 22%),
-        radial-gradient(circle at 50% 100%, rgba(255,255,255,0.04), transparent 0 30%),
-        linear-gradient(180deg, #0c0f15 0%, #11151d 45%, #0d1016 100%);
-      background-attachment: fixed;
+      background: var(--bg-gradient);
       overflow-x: hidden;
+      position: relative;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    #network-bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.8;
     }
 
     body::before {
@@ -49,12 +127,24 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
+      background: var(--overlay-gradient);
+      z-index: 1;
+      transition: background 0.35s ease;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
       background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 36px 36px;
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 40px 40px;
       mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
-      opacity: 0.25;
+      opacity: 0.2;
+      z-index: 1;
+      transition: background-image 0.35s ease;
     }
 
     a {
@@ -64,7 +154,7 @@
     }
 
     a:hover {
-      color: white;
+      color: var(--link-hover);
     }
 
     .publication-link {
@@ -86,7 +176,7 @@
     }
 
     .publication-link:hover {
-      color: white;
+      color: var(--link-hover);
       transform: translateX(2px);
     }
 
@@ -98,6 +188,8 @@
     .container {
       width: min(var(--maxw), calc(100% - 2rem));
       margin: 0 auto;
+      position: relative;
+      z-index: 2;
     }
 
     header {
@@ -105,8 +197,9 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(18px);
-      background: rgba(12, 15, 21, 0.7);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--line);
+      transition: background 0.35s ease, border-color 0.35s ease;
     }
 
     nav {
@@ -140,6 +233,22 @@
       gap: 1.1rem;
       flex-wrap: wrap;
       justify-content: flex-end;
+      align-items: center;
+    }
+
+    .nav-links-main {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-utility {
+      display: flex;
+      align-items: center;
+      margin-left: 0.4rem;
+      padding-left: 0.9rem;
+      border-left: 1px solid var(--line);
     }
 
     .nav-links a {
@@ -164,6 +273,32 @@
       width: 100%;
     }
 
+    .theme-toggle {
+      appearance: none;
+      border: 1px solid var(--button-border);
+      background: var(--button-bg);
+      color: var(--text);
+      width: 2.35rem;
+      height: 2.35rem;
+      border-radius: 999px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(8px);
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+      flex: 0 0 auto;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      border-color: var(--button-hover-border);
+      background: var(--button-hover-bg);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.1);
+    }
+
     .hero {
       position: relative;
       padding: 6.25rem 0 3.5rem;
@@ -184,6 +319,12 @@
       filter: blur(8px);
       pointer-events: none;
       z-index: -1;
+      opacity: 0.9;
+    }
+
+    body.light-mode .hero::after {
+      opacity: 0.45;
+      filter: blur(10px);
     }
 
     .eyebrow {
@@ -191,13 +332,14 @@
       align-items: center;
       gap: 0.55rem;
       padding: 0.42rem 0.82rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--line);
       border-radius: 999px;
       color: var(--soft);
-      background: rgba(255,255,255,0.04);
+      background: var(--button-bg);
       font-size: 0.9rem;
       margin-bottom: 1rem;
       box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
     }
 
     .eyebrow::before {
@@ -207,6 +349,10 @@
       border-radius: 999px;
       background: var(--accent);
       box-shadow: 0 0 18px var(--accent-glow);
+    }
+
+    body.light-mode .eyebrow::before {
+      box-shadow: 0 0 8px var(--accent-glow);
     }
 
     h1, h2, h3 {
@@ -241,12 +387,13 @@
     .hero-card,
     .card {
       position: relative;
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      border: 1px solid var(--line);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      overflow: hidden;
+      overflow: visible;
       transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+      backdrop-filter: blur(14px);
     }
 
     .hero-card::before,
@@ -254,20 +401,20 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 40%, transparent 100%);
+      background: var(--card-highlight);
       pointer-events: none;
+      border-radius: inherit;
     }
 
     .hero-card:hover,
     .card:hover {
       transform: translateY(-4px);
-      border-color: var(--line-strong);
-      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+      border-color: rgba(110,168,255,0.18);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.16);
     }
 
     .hero-card {
       padding: 1.5rem;
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.035));
     }
 
     .hero-stats {
@@ -280,15 +427,16 @@
     .stat {
       padding: 1rem;
       border-radius: 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--stat-bg);
+      border: 1px solid var(--stat-border);
       transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      backdrop-filter: blur(8px);
     }
 
     .stat:hover {
       transform: translateY(-3px);
       border-color: rgba(110,168,255,0.22);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(110,168,255,0.04));
+      background: linear-gradient(180deg, var(--button-hover-bg), var(--accent-soft));
     }
 
     .stat strong {
@@ -315,25 +463,32 @@
       gap: 0.45rem;
       padding: 0.86rem 1.18rem;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid var(--button-border);
       color: var(--text);
-      background: rgba(255,255,255,0.04);
+      background: var(--button-bg);
       font-weight: 600;
       box-shadow: var(--shadow-soft);
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      backdrop-filter: blur(8px);
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
     }
 
     .button:hover {
       transform: translateY(-2px);
-      border-color: rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.07);
-      box-shadow: 0 18px 28px rgba(0, 0, 0, 0.2);
+      border-color: var(--button-hover-border);
+      background: var(--button-hover-bg);
+      box-shadow: 0 18px 28px rgba(0, 0, 0, 0.12);
     }
 
     .button.primary {
       background: linear-gradient(135deg, rgba(110,168,255,0.22), rgba(110,168,255,0.12));
       border-color: rgba(110,168,255,0.28);
       color: white;
+    }
+
+    body.light-mode .button.primary {
+      color: #0f172a;
+      background: linear-gradient(135deg, rgba(59,130,246,0.18), rgba(59,130,246,0.08));
+      border-color: rgba(59,130,246,0.24);
     }
 
     .button.primary:hover {
@@ -369,11 +524,11 @@
     .tag-list li {
       padding: 0.6rem 0.86rem;
       border-radius: 999px;
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
       color: var(--muted);
       font-size: 0.95rem;
-      transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+      transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
     }
 
     .tag-list li:hover {
@@ -404,7 +559,12 @@
       height: 7px;
       border-radius: 999px;
       background: var(--accent);
-      box-shadow: 0 0 12px rgba(110,168,255,0.45);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    body.light-mode .timeline-item::before,
+    body.light-mode .pub-item::before {
+      box-shadow: none;
     }
 
     .timeline-item:first-child,
@@ -424,15 +584,9 @@
       margin-bottom: 0.35rem;
     }
 
-    footer {
-      padding: 2.5rem 0 4rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
     .small-note {
       font-size: 0.92rem;
-      color: #99a3b6;
+      color: var(--muted);
       margin-top: 0.55rem;
     }
 
@@ -443,6 +597,120 @@
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 0.8rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.1rem;
+    }
+
+    .section-header h2 {
+      margin-bottom: 0;
+    }
+
+    .section-action {
+      white-space: nowrap;
+    }
+
+    .tooltip-term {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      cursor: help;
+      transition: color 0.25s ease, border-color 0.25s ease;
+      border-bottom: 1px dashed rgba(110, 168, 255, 0.45);
+    }
+
+    .tooltip-term:hover {
+      color: var(--soft);
+      border-color: rgba(110, 168, 255, 0.8);
+    }
+
+    body.light-mode .tooltip-term {
+      border-bottom-color: rgba(59, 130, 246, 0.82);
+      border-bottom-width: 1.5px;
+    }
+
+    body.light-mode .tooltip-term:hover {
+      border-bottom-color: rgba(59, 130, 246, 1);
+    }
+
+    .focus-tooltip {
+      border-bottom: none;
+    }
+
+    .focus-tooltip:hover {
+      border-color: transparent;
+    }
+
+    .tooltip-term::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 0.8rem);
+      transform: translateX(-50%) translateY(8px);
+      width: max-content;
+      max-width: min(320px, 82vw);
+      padding: 0.72rem 0.9rem;
+      border-radius: 14px;
+      background: var(--tooltip-bg);
+      color: var(--text);
+      border: 1px solid var(--tooltip-border);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+      backdrop-filter: blur(12px);
+      font-size: 0.86rem;
+      line-height: 1.45;
+      letter-spacing: 0;
+      white-space: normal;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease, background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+      z-index: 30;
+    }
+
+    .tooltip-term::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 0.28rem);
+      transform: translateX(-50%) translateY(8px) rotate(45deg);
+      width: 10px;
+      height: 10px;
+      background: var(--tooltip-bg);
+      border-right: 1px solid var(--tooltip-border);
+      border-bottom: 1px solid var(--tooltip-border);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease, background 0.35s ease, border-color 0.35s ease;
+      z-index: 29;
+    }
+
+    .tooltip-term:hover::after,
+    .tooltip-term:hover::before,
+    .tooltip-term:focus-visible::after,
+    .tooltip-term:focus-visible::before {
+      opacity: 1;
+    }
+
+    .tooltip-term:hover::after,
+    .tooltip-term:focus-visible::after {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .tooltip-term:hover::before,
+    .tooltip-term:focus-visible::before {
+      transform: translateX(-50%) translateY(0) rotate(45deg);
+    }
+
+    .tooltip-term:focus-visible {
+      outline: 2px solid rgba(110, 168, 255, 0.45);
+      outline-offset: 3px;
+      border-radius: 4px;
+      text-decoration: none;
     }
 
     @keyframes fadeUp {
@@ -475,12 +743,48 @@
         flex-direction: column;
       }
 
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .nav-links-main {
+        gap: 0.9rem;
+      }
+
+      .nav-utility {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: 0;
+      }
+
       .hero {
         padding-top: 5rem;
       }
 
       h1 {
         max-width: none;
+      }
+
+      .tooltip-term::after {
+        left: 0;
+        transform: translateY(8px);
+        max-width: min(280px, 78vw);
+      }
+
+      .tooltip-term::before {
+        left: 1rem;
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .tooltip-term:hover::after,
+      .tooltip-term:focus-visible::after {
+        transform: translateY(0);
+      }
+
+      .tooltip-term:hover::before,
+      .tooltip-term:focus-visible::before {
+        transform: translateY(0) rotate(45deg);
       }
     }
 
@@ -501,16 +805,24 @@
   </style>
 </head>
 <body>
+  <canvas id="network-bg" aria-hidden="true"></canvas>
   <header>
     <div class="container">
       <nav>
         <a class="brand" href="#top">Nico Wagner</a>
         <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#research">Research</a>
-          <a href="#publications">Publications</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
+          <div class="nav-links-main">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="nav-utility">
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle light and dark mode">
+              <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+            </button>
+          </div>
         </div>
       </nav>
     </div>
@@ -522,12 +834,10 @@
         <div class="eyebrow">Machine Learning Research</div>
         <h1>Nico Wagner</h1>
         <p class="lead">
-          I am a researcher and computer science student based in Tübingen, Germany, with a focus on machine learning, LLM evaluation,
-          uncertainty quantification, model efficiency, and AI for scientific discovery.
+          I am a computer science student based in Tübingen, Germany, with strong research interests in machine learning, uncertainty quantification, model efficiency, and AI for scientific discovery.
         </p>
         <p class="lead">
-          My work spans both applied and foundational topics, including LLM-as-a-judge systems, knowledge distillation and pruning,
-          quantum machine learning, and mathematical methods for scientific AI.
+          My work spans both applied and foundational topics, including LLM-as-a-judge systems, knowledge distillation and pruning, quantum machine learning, and mathematical methods for scientific AI. I am also eager to explore adjacent areas such as computer vision and broader directions in AI for scientific discovery.
         </p>
 
         <div class="cta-row">
@@ -568,12 +878,15 @@
       <div class="grid-2">
         <div class="card">
           <span class="section-label">About</span>
-          <h2>Researching reliable and efficient machine learning systems</h2>
+          <h2>Curious about AI with impact</h2>
           <p class="muted">
-            I am interested in building reliable, efficient, and scientifically useful machine learning systems. My research has explored black-box uncertainty quantification for LLM-based evaluation, efficiency methods such as pruning and distillation, and machine learning applications ranging from quantum models to scientific combinatorics.
+            I am interested in building reliable, efficient, and scientifically useful machine learning systems. So far, I have worked on topics such as uncertainty quantification, pruning and distillation, quantum machine learning, and mathematical methods for scientific AI.
           </p>
           <p class="muted">
-            Through multiple research and engineering internships at IBM, including work with the MIT-IBM Watson AI Lab, I have contributed to projects at the intersection of modern foundation models, evaluation, and AI for science.
+            Through multiple research and engineering internships at IBM, including work with the MIT-IBM Watson AI Lab, I have gained experience across both applied and foundational machine learning projects.
+          </p>
+          <p class="muted">
+            I am always open to exploring new areas, working my way into unfamiliar topics, and broadening my perspective across machine learning, computer vision, and AI for scientific discovery.
           </p>
         </div>
 
@@ -581,15 +894,14 @@
           <span class="section-label">Focus Areas</span>
           <h2>Research Focus</h2>
           <ul class="tag-list">
-            <li>Large Language Models</li>
-            <li>LLM Evaluation</li>
-            <li>Uncertainty Quantification</li>
-            <li>Model Compression</li>
-            <li>Knowledge Distillation</li>
-            <li>Pruning</li>
-            <li>AI for Science</li>
-            <li>Quantum Machine Learning</li>
-            <li>Scientific Machine Learning</li>
+            <li><span class="tooltip-term focus-tooltip" tabindex="0" data-tooltip="Foundation models trained on very large text corpora that can perform many language tasks such as reasoning, summarization, and generation.">Large Language Models</span></li>
+            <li><span class="tooltip-term focus-tooltip" tabindex="0" data-tooltip="Techniques that estimate how confident a model should be in its predictions or judgments.">Uncertainty Quantification</span></li>
+            <li><span class="tooltip-term focus-tooltip" tabindex="0" data-tooltip="Reducing model size or inference cost while preserving as much performance as possible.">Model Compression</span></li>
+            <li><span class="tooltip-term focus-tooltip" tabindex="0" data-tooltip="Training a smaller model to imitate the behavior of a larger and usually stronger model.">Knowledge Distillation</span></li>
+            <li><span class="tooltip-term focus-tooltip" tabindex="0" data-tooltip="Removing less important weights, neurons, or components from a model to improve efficiency.">Pruning</span></li>
+            <li><span class="tooltip-term focus-tooltip" tabindex="0" data-tooltip="Applying machine learning to scientific problems such as biology, chemistry, physics, or mathematics.">AI for Science</span></li>
+            <li><span class="tooltip-term focus-tooltip" tabindex="0" data-tooltip="Machine learning methods that use quantum computing ideas or quantum hardware in the modeling pipeline.">Quantum Machine Learning</span></li>
+            <li><span class="tooltip-term focus-tooltip" tabindex="0" data-tooltip="Machine learning methods tailored to scientific data, physical structure, or domain-specific constraints.">Scientific Machine Learning</span></li>
           </ul>
         </div>
       </div>
@@ -597,8 +909,13 @@
 
     <section id="publications">
       <div class="card">
-        <span class="section-label">Publications</span>
-        <h2>Selected Publications</h2>
+        <div class="section-header">
+          <div>
+            <span class="section-label">Publications</span>
+            <h2>Selected Publications</h2>
+          </div>
+          <a class="button section-action" href="https://scholar.google.com/citations?view_op=list_works&hl=de&hl=de&user=M1K0D0oAAAAJ">Google Scholar</a>
+        </div>
 
         <div class="pub-item">
           <h3><a class="publication-link" href="https://arxiv.org/abs/2504.16275" target="_blank" rel="noopener noreferrer">Quantum Doubly Stochastic Transformers</a></h3>
@@ -647,13 +964,13 @@
             <div class="timeline-item">
               <div class="meta">11/2023 – 02/2024 · IBM, Software Development – Data and AI</div>
               <h3>Intern</h3>
-              <p class="muted">Built a RAG-based LLM application and worked on evaluation of LLMs using LLMs.</p>
+              <p class="muted">Built a <span class="tooltip-term" tabindex="0" data-tooltip="Retrieval-Augmented Generation: a method that combines information retrieval with generation so a model can answer using external knowledge sources.">RAG</span>-based LLM application and worked on evaluation of LLMs using LLMs.</p>
             </div>
 
             <div class="timeline-item">
               <div class="meta">06/2023 – 09/2023 · IBM, Quantum Machine Learning</div>
               <h3>Intern</h3>
-              <p class="muted">Applied SVC and QSVC to molecular classification and explored quantum feature maps for data processing.</p>
+              <p class="muted">Applied <span class="tooltip-term" tabindex="0" data-tooltip="Support Vector Classifier: a supervised learning method that separates classes using decision boundaries with maximum margin.">SVC</span> and <span class="tooltip-term" tabindex="0" data-tooltip="Quantum Support Vector Classifier: a support vector method that uses a quantum feature map or kernel.">QSVC</span> to molecular classification and explored <span class="tooltip-term" tabindex="0" data-tooltip="Transformations that encode classical data into a quantum state space for use in quantum machine learning methods.">quantum feature maps</span> for data processing.</p>
             </div>
 
             <div class="timeline-item">
@@ -708,21 +1025,170 @@
         <span class="section-label">Contact</span>
         <h2>Get in touch</h2>
         <p class="muted">
-          I am interested in research collaborations and opportunities related to machine learning, foundation models, evaluation, and efficient AI systems.
+          I am interested in research collaborations and opportunities related to machine learning. I am also always open to discussing research ideas, potential collaborations, and new opportunities.
         </p>
         <ul class="link-list">
           <li><a class="button primary" href="mailto:nicowagner02@gmail.com">nicowagner02@gmail.com</a></li>
-          <li><a class="button" href="#" title="Replace this placeholder with your Google Scholar link">Google Scholar</a></li>
-          <li><a class="button" href="#" title="Replace this placeholder with your LinkedIn URL">LinkedIn</a></li>
+          <li><a class="button" href="https://scholar.google.com/citations?view_op=list_works&hl=de&hl=de&user=M1K0D0oAAAAJ">Google Scholar</a></li>
+          <li><a class="button" href="https://www.linkedin.com/in/nico-wagner1/">LinkedIn</a></li>
         </ul>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>© 2026 Nico Wagner. Built for GitHub Pages.</p>
-    </div>
-  </footer>
+  <script>
+    (() => {
+      const canvas = document.getElementById('network-bg');
+      const body = document.body;
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+      const ctx = canvas.getContext('2d');
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      let width = 0;
+      let height = 0;
+      let particles = [];
+      let mouse = { x: null, y: null, radius: 140 };
+      let animationId = null;
+
+      function getMaxParticles() {
+        return window.innerWidth < 768 ? 42 : 72;
+      }
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        createParticles();
+      }
+
+      function createParticles() {
+        particles = Array.from({ length: getMaxParticles() }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          size: Math.random() * 1.8 + 1.1
+        }));
+      }
+
+      function drawParticle(p) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = getComputedStyle(body).getPropertyValue('--canvas-dot').trim();
+        ctx.fill();
+      }
+
+      function drawLink(a, b, distance) {
+        const alpha = 1 - distance / 150;
+        const lineRgb = getComputedStyle(body).getPropertyValue('--canvas-line-rgb').trim();
+        const baseOpacity = body.classList.contains('light-mode') ? 0.28 : 0.18;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = `rgba(${lineRgb}, ${alpha * baseOpacity})`;
+        ctx.lineWidth = body.classList.contains('light-mode') ? 1.15 : 1;
+        ctx.stroke();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+
+          if (!prefersReducedMotion) {
+            p.x += p.vx;
+            p.y += p.vy;
+          }
+
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          if (mouse.x !== null && mouse.y !== null) {
+            const dx = p.x - mouse.x;
+            const dy = p.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              const force = (mouse.radius - dist) / mouse.radius;
+              const angle = Math.atan2(dy, dx);
+              p.x += Math.cos(angle) * force * 1.8;
+              p.y += Math.sin(angle) * force * 1.8;
+            }
+          }
+
+          drawParticle(p);
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const q = particles[j];
+            const dx = p.x - q.x;
+            const dy = p.y - q.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 150) {
+              drawLink(p, q, distance);
+            }
+          }
+        }
+
+        animationId = requestAnimationFrame(animate);
+      }
+
+      function applyTheme(theme, persist = true) {
+        const isLight = theme === 'light';
+        body.classList.toggle('light-mode', isLight);
+        themeToggle.setAttribute('aria-pressed', String(isLight));
+        themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+        themeToggle.setAttribute('title', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+        if (persist) {
+          localStorage.setItem('theme-preference', theme);
+        }
+      }
+
+      window.addEventListener('mousemove', (event) => {
+        mouse.x = event.clientX;
+        mouse.y = event.clientY;
+      });
+
+      window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      window.addEventListener('touchmove', (event) => {
+        const touch = event.touches[0];
+        if (!touch) return;
+        mouse.x = touch.clientX;
+        mouse.y = touch.clientY;
+      }, { passive: true });
+
+      window.addEventListener('touchend', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      window.addEventListener('resize', () => {
+        cancelAnimationFrame(animationId);
+        resize();
+        animate();
+      });
+
+      const storedTheme = localStorage.getItem('theme-preference');
+      applyTheme(storedTheme || (themeMediaQuery.matches ? 'light' : 'dark'), Boolean(storedTheme));
+
+      themeMediaQuery.addEventListener('change', (event) => {
+        const savedPreference = localStorage.getItem('theme-preference');
+        if (!savedPreference) {
+          applyTheme(event.matches ? 'light' : 'dark', false);
+        }
+      });
+
+      themeToggle.addEventListener('click', () => {
+        const nextTheme = body.classList.contains('light-mode') ? 'dark' : 'light';
+        applyTheme(nextTheme, true);
+      });
+
+      resize();
+      animate();
+    })();
+  </script>
 </body>
 </html>
